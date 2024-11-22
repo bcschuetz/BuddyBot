@@ -1,0 +1,145 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.top_header {
+    display: grid;
+    grid-template-columns: 70% 15% 15%;
+    background: #fa8072;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: -8px;
+    position: sticky;
+    top: 0;
+}
+.header_item {
+    padding: 35px;
+}
+.header_item a {
+    text-decoration: none;
+    color: white;
+    font-size: 16pt;
+}
+.header_item a:hover {
+    color: #057f8d;
+    transition-duration: 0.5s;
+}
+.section1 h1 {
+    font-size: 30pt;
+}
+.section1 h2 {
+    font-size:25pt;
+}
+.container_sections {
+    margin-left: 200px;
+    padding-top: 80px;
+}
+body {
+    background-image: url(Bilder/background.jpg);
+    background-repeat: repeat;
+    background-size: 100%;
+}
+.button {
+    font-size: 20pt;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 15px 40px;
+    background-color: #057f8d;
+    border-color: #057f8d;
+}
+.button a {
+    text-decoration: none;
+    color: white;
+}
+.button:hover {
+    background-color: #C8D9ED;
+    border-color: #C8D9ED;
+    transition-duration: 0.5s;
+}
+.section3 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+.section3 img {
+    border-radius: 30px;
+    margin-top: 100px;
+}
+.container_header {
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+.buddy_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    align-items: center;
+    font-size: 15pt;
+    margin-top: 30px;
+    background-color: lightsteelblue;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    border-radius: 50px;
+}
+.buddy_form input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 15pt;
+}
+.buddy_form input::placeholder {
+    font-size: 15pt;
+}
+.main_bp {
+    display: flex;
+    justify-content: center;
+}
+.section4 {
+    font-size: 25pt;
+    text-align: center;
+}
+.section5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.section5 div {
+    padding: 10px 20px;
+    border-style: solid;
+    width: 25%;
+    height: 300px;
+    margin: 10px;
+    background: #057f8d;
+    border: none;
+}
+.section5_h2 {
+    font-size: 30pt;
+    text-align: center;
+    margin-top: 200px;
+}
+.section5 h3 {
+    font-size: 20pt;
+}
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-between;
+    margin-top: 50px;
+    padding: 20px;
+    background-color:#fa8072;
+}
+footer div {
+    padding: 10px;
+}
+footer div a {
+    text-decoration: none;
+    color: white;
+}
+footer div a:hover {
+    color: #057f8d;
+    transition-duration: 0.5s;
+}
