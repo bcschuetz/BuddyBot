@@ -46,6 +46,11 @@
             } else {
                 echo "Your username is: '" . $_COOKIE[$username_name] . "'!<br>";
             }
+            if(!isset($_COOKIE[$company_name])) {
+                echo "ERROR: Please type in your company ID.";
+            } else {
+                echo "Your company ID is: '" . $_COOKIE[$company_name] . "'!<br>";
+            }
         ?>
         <footer>
             <div><a href="#">About us</a></div>
