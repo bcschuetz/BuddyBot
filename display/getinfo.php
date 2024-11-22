@@ -43,11 +43,19 @@
 
 
 //lisas code für php abfragen
-    require "../config/dbh.inc.php";
-    echo "Ausgabe";
-    $ausg = $dsn->query("SELECT username FROM user");
-    print_r($erg);
+require "../config/dbh.inc.php";  // Include the database connection file
 
+echo "Ausgabe";  // This will just print 'Ausgabe' to the page
+
+// Perform the query using the correct PDO object ($pdo)
+$ausg = $pdo->query("SELECT username FROM user");  // Execute the query on the database
+
+// Fetch all the results as an associative array
+$results = $ausg->fetchAll(PDO::FETCH_ASSOC);
+
+// Print the results using print_r
+print_r($results);  // This will print the array of usernames from the user table
+?>
 
     
 
