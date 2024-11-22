@@ -53,15 +53,16 @@
             <h1>Log in with existing Buddy Profile</h1>
         </section>
         <div class="main_bp">
-            <form name="login" method="post" action="formhandler.inc.php" class="buddy_form">
-                <p>Please type in your username</p>
-                <input type="text" placeholder="Username" name="username">
-                <p>... and your company ID! </p>
-                <input type="text" placeholder="Company ID" name="c_ID">
-                <input type="submit" value="submit"><input type="reset" value="reset">
-                <p>Don't own a Buddy Profile?</p>
-                <a href="buddyprofile.php">Create Buddy Profile</a>
-            </form>
+        <form name="login" method="post" action="login.php" class="buddy_form">
+            <p>Please type in your username</p>
+            <input type="text" placeholder="Username" name="username" required>
+            <p>... and your company ID!</p>
+            <input type="text" placeholder="Company ID" name="c_ID" required>
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+            <p>Don't own a Buddy Profile?</p>
+            <a href="buddyprofile.php">Create Buddy Profile</a>
+        </form>
             
         </div>
         <br><br><br>
