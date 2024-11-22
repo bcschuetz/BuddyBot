@@ -1,23 +1,36 @@
 <?php
-    error_reporting(0);
-    /*$servername = "localhost";
-    $username = "username";
-    $password = "password";
-    $username_name = "user"; */
-    // Create connection
-    $connection = mysqli_connect("localhost", "root", "", "labdays");
-    //test
-    /*if (!$connection) {
-        echo "Keine Verbindung";
-    } else {
-        echo "Die Verbindung war erfolgreich";
-    } */
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Retrieve form data
+        $username = $_REQUEST["username"];
+        $companyID = $_REQUEST["c_ID"];
 
-    /*$username_value = $_REQUEST["username"];
-    $company_name = "company_id";
-    $company_value = $_REQUEST["c_ID"];
-    setcookie($username_name, $username_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-    setcookie($company_name, $company_value, time() + (86400 * 30), "/"); // 86400 = 1 day */
+        try {
+            // Include the database connection
+            require_once "dbh.inc.php";
+
+            // Check if the username exists in the database
+            $query = "SELECT username FROM user WHERE username = :username AND c_ID = :c_ID";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':c_ID', $companyID);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                // Username exists, login successful
+                echo "Login successful! Welcome, $username.";
+                header("Location: thanks.html"); // Redirect to a dashboard or another page
+                exit();
+            } else {
+                // Username does not exist
+                echo "<p style='color: red;'>Error: Invalid username or company ID. Please try again.</p>";
+            }
+        } catch (PDOException $e) {
+            die("Query failed: " . $e->getMessage());
+        } finally {
+            $stmt = null;
+            $pdo = null;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,32 +53,18 @@
             <h1>Log in with existing Buddy Profile</h1>
         </section>
         <div class="main_bp">
-            <form name="login" method="post" action="formhandler.inc.php" class="buddy_form">
-                <p>Please type in your username</p>
-                <input type="text" placeholder="Username" name="username">
-                <p>... and your company ID! </p>
-                <input type="text" placeholder="Company ID" name="c_ID">
-                <input type="submit" value="submit"><input type="reset" value="reset">
-                <p>Don't own a Buddy Profile?</p>
-                <a href="buddyprofile.php">Create Buddy Profile</a>
-            </form>
-            
+        <form name="login" method="post" action="login.php" class="buddy_form">
+            <p>Please type in your username</p>
+            <input type="text" placeholder="Username" name="username" required>
+            <p>... and your company ID! </p>
+            <input type="text" placeholder="Company ID" name="c_ID" required>
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+            <p>Don't own a Buddy Profile?</p>
+            <a href="buddyprofile.php">Create Buddy Profile</a>
+        </form>
         </div>
         <br><br><br>
-        <?php
-        /*
-            if(!isset($_COOKIE[$username_name])) {
-                echo "ERROR: Please type in your username.";
-            } else {
-                echo "Your username is: '" . $_COOKIE[$username_name] . "'!<br>";
-            }
-            if(!isset($_COOKIE[$company_name])) {
-                echo "ERROR: Please type in your company ID.";
-            } else {
-                echo "Your company ID is: '" . $_COOKIE[$company_name] . "'!<br>";
-            }
-                */
-        ?>
         <footer>
             <div><a href="#">About us</a></div>
             <div><a href="#">Products/Services</a></div>

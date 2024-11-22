@@ -1,41 +1,45 @@
 <?php
-   if ($_SERVER["REQUEST_METHOD"] === "POST") {
-       $username = $_REQUEST["username"];
-       $companyID = $_REQUEST["c_ID"];
-       $firstName = $_REQUEST["first_name"]; // Ensure input fields have proper `name` attributes
-       $lastName = $_REQUEST["last_name"];
-   
-       try {
-           // Include the database connection
-           require_once "dbh.inc.php";
-   
-           // Check if the username exists in the database
-           $query = "SELECT username FROM user WHERE username = :username";
-           $stmt = $pdo->prepare($query);
-           $stmt->bindParam(':username', $username);
-           $stmt->execute();
-   
-           if ($stmt->rowCount() > 0) {
-               // Username exists, proceed to process the form data
-               echo "Username exists. Proceeding...";
-               // Optionally, you can add user details or perform additional actions here
-               header("Location: success.php"); // Redirect to a success page
-               die();
-           } else {
-               // Username does not exist
-               echo "Error: Username does not exist in the database. Please enter a valid username.";
-           }
-       } catch (PDOException $e) {
-           die("Query failed: " . $e->getMessage());
-       } finally {
-           $stmt = null;
-           $pdo = null;
-       }
-   } else {
-       // If the form was not submitted properly, redirect
-       header("Location: buddyprofile.php");
-       die();
-   }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Retrieve form data
+    $username = $_REQUEST["username"];
+    $companyID = $_REQUEST["c_ID"];
+    $firstName = $_REQUEST["first_name"];
+    $lastName = $_REQUEST["last_name"];
+
+    try {
+        // Include the database connection
+        require_once "dbh.inc.php";
+
+        // Check if the username already exists
+        $query = "SELECT username FROM user WHERE username = :username";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            // Username already exists
+            echo "<p style='color: red;'>Error: Username already exists. Please choose a different one.</p>";
+        } else {
+            // Username does not exist, create a new profile
+            $insertQuery = "INSERT INTO user (username, first_name, last_name, c_ID) VALUES (:username, :first_name, :last_name, :c_ID)";
+            $insertStmt = $pdo->prepare($insertQuery);
+            $insertStmt->bindParam(':username', $username);
+            $insertStmt->bindParam(':first_name', $firstName);
+            $insertStmt->bindParam(':last_name', $lastName);
+            $insertStmt->bindParam(':c_ID', $companyID);
+            $insertStmt->execute();
+
+            echo "<p style='color: green;'>Profile created successfully!</p>";
+            header("Location: login.php");
+            exit();
+        }
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    } finally {
+        $stmt = null;
+        $pdo = null;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,19 +62,23 @@
             <h1>Create your own Buddy Profile</h1>
         </section>
         <div class="main_bp">
-        <form name="buddyprofile" method="post" action="buddyprofile.php" class="buddy_form">
+        <form name="buddyprofile" method="post" action="formhandler.inc.php" class="buddy_form">
             <p>Please select a unique username</p>
             <input type="text" placeholder="Username" name="username" required>
+
             <p>.. and your real name!</p>
             <input type="text" placeholder="First name" name="first_name" required>
             <input type="text" placeholder="Last name" name="last_name" required>
+
             <p> Please put in your Company's ID </p>
             <input type="text" placeholder="Company ID" name="c_ID" required>
+
             <input type="submit" value="submit">
             <input type="reset" value="reset">
             <p>Already own a Buddy Profile?</p>
             <a href="login.php">Log In</a>
-        </form>
+    	</form>
+
         </div>
         <?php
             
