@@ -11,7 +11,7 @@
 <body>
     <div id="php-get-info" style="display: none;">
         <?php
-        require "../config/dbh.inc.php";  // Include the database connection file
+        require "dbh.inc.php";  // Include the database connection file
 
         echo "Ausgabe";  // This will just print 'Ausgabe' to the page
 
