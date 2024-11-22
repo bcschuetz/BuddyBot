@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "dbh.inc.php";
 
         // Insert the user data into the database, including the birthday
-        $query = "INSERT INTO user (username, c_ID, U_firstname, U_lastname, birthday) VALUES (:username, :company, :first_name, :last_name, :birthday)";
+        $query = "INSERT INTO user (username, c_ID, first_name, last_name, birthday) VALUES (:username, :company, :first_name, :last_name, :birthday)";
         $stmt = $pdo->prepare($query);
 
         // Bind parameters securely
