@@ -1,4 +1,9 @@
-let delayMilliseconds = 2000;
+let delayMilliseconds = 2000;  // change to 20 seconds later (= 20000)
+let cycleThroughEvents = true;
+
+
+
+// Manage each cycle step
 
 let counter = 0;
 
@@ -18,9 +23,47 @@ function prev() {
     document.getElementById("image").src = counter % 2 == 1 ? "cat.jpeg" : "tac.jpeg";
 }
 
-function cycle() {
-    setInterval(next, delayMilliseconds);
-    next();
+
+
+// Manage starting and ending the cycle
+
+let cycleInterval;
+
+function startCycle() {
+    cycleInterval = setInterval(next, delayMilliseconds);
 }
 
-cycle();
+function endCycle() {
+    clearInterval(cycleInterval);
+}
+
+function updateCycle() {
+    if (cycleThroughEvents) {
+        startCycle();
+    } else {
+        endCycle();
+    }
+}
+
+
+
+// Manage keyboard inputs
+
+function manageKeyEvent(event) {
+    if (event.key === " ") {
+        cycleThroughEvents = !cycleThroughEvents;
+        updateCycle();
+    } else if (event.key === "ArrowLeft") {
+        prev();
+    } else if (event.key === "ArrowRight") {
+        next();
+    }
+}
+
+window.addEventListener("keydown", manageKeyEvent);
+
+
+
+// Start the cycle
+
+updateCycle();

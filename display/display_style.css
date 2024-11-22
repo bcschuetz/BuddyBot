@@ -18,6 +18,7 @@ body {
     margin-top: 20px;
     font-weight: bold;
     text-align: left;
+    white-space: pre-line;
 }
 
 /*
