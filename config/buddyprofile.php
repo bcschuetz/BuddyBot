@@ -70,6 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="text" placeholder="First name" name="first_name" required>
             <input type="text" placeholder="Last name" name="last_name" required>
 
+            <p> Please enter your birthday </p>
+            <input type="date" name="birthday" required>
+
             <p> Please put in your Company's ID </p>
             <input type="text" placeholder="Company ID" name="c_ID" required>
 
@@ -78,12 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p>Already own a Buddy Profile?</p>
             <a href="login.php">Log In</a>
         </form>
-
-
         </div>
-        <?php
-            
-        ?>
         <footer>
             <div><a href="#">About us</a></div>
             <div><a href="#">Products/Services</a></div>
