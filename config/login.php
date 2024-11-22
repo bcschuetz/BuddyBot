@@ -5,6 +5,7 @@
     $company_name = "company_id";
     $company_value = $_REQUEST["c_ID"];
     setcookie($username_name, $username_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+    setcookie($company_name, $company_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
 <!DOCTYPE html>
 <html lang="en">
