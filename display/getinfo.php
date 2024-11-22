@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_REQUEST["username"];
     $key = $_REQUEST["key"];
 
@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Both username and key are required.");
     }
 
-    try {
+    try { 
         require_once "../config/dbh.inc.php";
         $query = "SELECT $key FROM user WHERE username = :username;";  // LIMIT 1?
         $stmt = $pdo->prepare($query);
@@ -39,7 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     die("Invalid request method.");
-}
+} */
+
+
+//lisas code für php abfragen
+    require "../config/dbh.inc.php";
+    echo "Ausgabe";
+    $ausg = $dsn->query("SELECT username FROM user");
+    print_r($erg);
+
+
     
 
     // htmlspecialchars($username); for output
