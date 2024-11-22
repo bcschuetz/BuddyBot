@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        require_once "dbh.inc.php";
+        require_once "../config/dbh.inc.php";
         $query = "SELECT $key FROM user WHERE username = :username;";  // LIMIT 1?
         $stmt = $pdo->prepare($query);
 
