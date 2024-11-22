@@ -1,5 +1,5 @@
-<div id="php-get-info" style="display: none;">
-<?php
+<!--div id="php-get-info" style="display: none;">
+<!?php
 /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_REQUEST["username"];
     $key = $_REQUEST["key"];

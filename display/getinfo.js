@@ -1,5 +1,5 @@
 
-function getInfo(username, key) {
+/*function getInfo(username, key) {
 alert("0");
     var dataArray = document.getElementById("php-get-info").textContent;
     alert("1");
@@ -7,3 +7,4 @@ alert("0");
     alert("hello");
     alert(dataArray);
 }
+*/

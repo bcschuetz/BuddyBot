@@ -1,9 +1,18 @@
 let delayMilliseconds = 2000;  // change to 20 seconds later (= 20000)
 let cycleThroughEvents = true;
-let events = [
+/*let events = [
     {"type": "birthday", "title": "Person hat heute Geburtstag!", "description": "abc", "image": "cat.jpeg"}
-];
+];*/
 
+
+function getInfo(username, key) {
+    alert("0");
+    var dataArray = document.getElementById("php-get-info").textContent;
+    alert("1");
+    //var dataArray = div.textContent;
+    alert("hello");
+    alert(dataArray);
+}
 
 // Manage each cycle step
 
