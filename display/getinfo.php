@@ -1,3 +1,4 @@
+<div id="php-get-info" style="display: none;">
 <?php
 /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_REQUEST["username"];
@@ -62,3 +63,5 @@ print_r($results);  // This will print the array of usernames from the user tabl
 // htmlspecialchars($username); for output
 
 ?>
+</div>
+<script src="getinfo.js"></script>

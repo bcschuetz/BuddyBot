@@ -12,9 +12,11 @@ let counter = 0;
 function next() {
     counter++;
 
-    //var mynewinfo = getInfo("lisa_hecker", "first_name");
+    //alert("hello");
 
-    document.getElementById("header").innerText = "Header " + counter;// + " " + mynewinfo;
+    var mynewinfo = getInfo("lisa_hecker", "first_name");
+
+    document.getElementById("header").innerText = "Header " + counter + " " + mynewinfo;
     document.getElementById("description").innerText = "Description " + counter;
     document.getElementById("image").src = counter % 2 == 1 ? "cat.jpeg" : "tac.jpeg";
 }
