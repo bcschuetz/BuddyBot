@@ -19,6 +19,7 @@ body {
     font-weight: bold;
     text-align: left;
     white-space: pre-line; /* important */
+    min-width: 50vw;
 }
 
 /*
@@ -27,7 +28,12 @@ body {
 }
 */
 
+.container {
+    display: flex;
+    flex-direction: row;
+}
 .container img {
     object-fit: contain;
     max-height: 75vh;
+    margin-left: 50px;
 }
