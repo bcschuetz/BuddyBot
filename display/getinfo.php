@@ -55,8 +55,10 @@ $results = $ausg->fetchAll(PDO::FETCH_ASSOC);
 
 // Print the results using print_r
 print_r($results);  // This will print the array of usernames from the user table
-?>
+
 
     
 
-    // htmlspecialchars($username); for output
+// htmlspecialchars($username); for output
+
+?>
