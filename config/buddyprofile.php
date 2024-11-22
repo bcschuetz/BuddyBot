@@ -23,16 +23,16 @@
         </section>
         <div class="main_bp">
         <form name="buddyprofile" method="post" action="buddyprofile.php" class="buddy_form">
-            <p>Please select a unique username</p>
+            <p>Please choose a unique username...</p>
             <input type="text" placeholder="Username" name="username" required>
-            <p>.. and your real name!</p>
+            <p>...and enter your real name!</p>
             <input type="text" placeholder="First name" name="first_name" required>
             <input type="text" placeholder="Last name" name="last_name" required>
-            <p> Please put in your Company's ID </p>
+            <p> Please submit your Company's ID.</p>
             <input type="text" placeholder="Company ID" name="c_ID" required>
             <input type="submit" value="submit">
             <input type="reset" value="reset">
-            <p>Already own a Buddy Profile?</p>
+            <p>Already have a Buddy Profile?</p>
             <a href="login.php">Log In</a>
         </form>
         </div>
