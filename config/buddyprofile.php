@@ -1,5 +1,41 @@
 <?php
+   if ($_SERVER["REQUEST_METHOD"] === "POST") {
+       $username = $_REQUEST["username"];
+       $companyID = $_REQUEST["c_ID"];
+       $firstName = $_REQUEST["first_name"]; // Ensure input fields have proper `name` attributes
+       $lastName = $_REQUEST["last_name"];
    
+       try {
+           // Include the database connection
+           require_once "dbh.inc.php";
+   
+           // Check if the username exists in the database
+           $query = "SELECT username FROM user WHERE username = :username";
+           $stmt = $pdo->prepare($query);
+           $stmt->bindParam(':username', $username);
+           $stmt->execute();
+   
+           if ($stmt->rowCount() > 0) {
+               // Username exists, proceed to process the form data
+               echo "Username exists. Proceeding...";
+               // Optionally, you can add user details or perform additional actions here
+               header("Location: success.php"); // Redirect to a success page
+               die();
+           } else {
+               // Username does not exist
+               echo "Error: Username does not exist in the database. Please enter a valid username.";
+           }
+       } catch (PDOException $e) {
+           die("Query failed: " . $e->getMessage());
+       } finally {
+           $stmt = null;
+           $pdo = null;
+       }
+   } else {
+       // If the form was not submitted properly, redirect
+       header("Location: buddyprofile.php");
+       die();
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
