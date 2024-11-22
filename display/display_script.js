@@ -1,4 +1,4 @@
-let delayMilliseconds = 2000;
+let delayMilliseconds = 2000;  // change to 20 seconds later (= 20000)
 
 let counter = 0;
 
