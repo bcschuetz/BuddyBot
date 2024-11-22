@@ -1,9 +1,9 @@
 <?php
     error_reporting(0);
-    $servername = "localhost";
+    /*$servername = "localhost";
     $username = "username";
     $password = "password";
-    $username_name = "user";
+    $username_name = "user"; */
     // Create connection
     $connection = mysqli_connect("localhost", "root", "", "labdays");
     //test
@@ -13,11 +13,11 @@
         echo "Die Verbindung war erfolgreich";
     } */
 
-    $username_value = $_REQUEST["username"];
+    /*$username_value = $_REQUEST["username"];
     $company_name = "company_id";
     $company_value = $_REQUEST["c_ID"];
     setcookie($username_name, $username_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-    setcookie($company_name, $company_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+    setcookie($company_name, $company_value, time() + (86400 * 30), "/"); // 86400 = 1 day */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
             <h1>Log in with existing Buddy Profile</h1>
         </section>
         <div class="main_bp">
-            <form name="login" method="post" action="login.php" class="buddy_form">
+            <form name="login" method="post" action="formhandler.inc.php" class="buddy_form">
                 <p>Please type in your username</p>
                 <input type="text" placeholder="Username" name="username">
                 <p>... and your company ID! </p>
@@ -53,6 +53,7 @@
         </div>
         <br><br><br>
         <?php
+        /*
             if(!isset($_COOKIE[$username_name])) {
                 echo "ERROR: Please type in your username.";
             } else {
@@ -63,6 +64,7 @@
             } else {
                 echo "Your company ID is: '" . $_COOKIE[$company_name] . "'!<br>";
             }
+                */
         ?>
         <footer>
             <div><a href="#">About us</a></div>

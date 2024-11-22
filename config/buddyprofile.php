@@ -1,8 +1,5 @@
 <?php
-    error_reporting(0);
-    $cookie_name = "user";
-    $cookie_value = $_REQUEST["username"];
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,25 +22,22 @@
             <h1>Create your own Buddy Profile</h1>
         </section>
         <div class="main_bp">
-            <form name="buddyprofile" method="post" action="buddyprofile.php" class="buddy_form">
-                <p>Please select a unique username</p>
-                <input type="text" placeholder="Username" name="username">
-                <p>.. and your real name!</p>
-                <input type="text" placeholder="First name">
-                <input type="text" placeholder="Last name">
-                <p> Please put in your Company's ID </p>
-                <input type="text" placeholder="Company ID" name="c_ID">
-                <input type="submit" value="submit"><input type="reset" value="reset">
-                <p>Already own a Buddy Profile?</p>
-                <a href="login.php">Log In</a>
-            </form>
+        <form name="buddyprofile" method="post" action="buddyprofile.php" class="buddy_form">
+            <p>Please select a unique username</p>
+            <input type="text" placeholder="Username" name="username" required>
+            <p>.. and your real name!</p>
+            <input type="text" placeholder="First name" name="first_name" required>
+            <input type="text" placeholder="Last name" name="last_name" required>
+            <p> Please put in your Company's ID </p>
+            <input type="text" placeholder="Company ID" name="c_ID" required>
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+            <p>Already own a Buddy Profile?</p>
+            <a href="login.php">Log In</a>
+        </form>
         </div>
         <?php
-            if(!isset($_COOKIE[$cookie_name])) {
-                echo "ERROR: Please type in your username.";
-            } else {
-                echo "Your username is: '" . $_COOKIE[$cookie_name] . "'!<br>";
-            }
+            
         ?>
         <footer>
             <div><a href="#">About us</a></div>
