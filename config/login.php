@@ -5,8 +5,14 @@
     $password = "password";
     $username_name = "user";
     // Create connection
-    $connection = new mysqli($servername, $username, $password);
-    
+    $connection = mysqli_connect("localhost", "root", "", "labdays");
+    //test
+    /*if (!$connection) {
+        echo "Keine Verbindung";
+    } else {
+        echo "Die Verbindung war erfolgreich";
+    } */
+
     $username_value = $_REQUEST["username"];
     $company_name = "company_id";
     $company_value = $_REQUEST["c_ID"];
