@@ -1,6 +1,12 @@
 <?php
     error_reporting(0);
+    $servername = "localhost";
+    $username = "username";
+    $password = "password";
     $username_name = "user";
+    // Create connection
+    $connection = new mysqli($servername, $username, $password);
+    
     $username_value = $_REQUEST["username"];
     $company_name = "company_id";
     $company_value = $_REQUEST["c_ID"];
