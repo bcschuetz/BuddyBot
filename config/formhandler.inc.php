@@ -1,20 +1,21 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_REQUEST["username"];
-    $company = $_REQUEST["c_ID"];
-    $firstName = $_REQUEST["first_name"];
-    $lastName = $_REQUEST["last_name"];
+    $username = $_REQUEST["username"] ?? null;
+    $company = $_REQUEST["c_ID"] ?? null;
+    $firstName = $_REQUEST["first_name"] ?? null;
+    $lastName = $_REQUEST["last_name"] ?? null;
+    $birthday = $_REQUEST["birthday"] ?? null;
 
-    // Check if any required fields are empty
-    if (empty($username) || empty($company) || empty($firstName) || empty($lastName)) {
-        die("All fields are required: Username, Company ID, First Name, and Last Name.");
+    // Ensure all required fields are present
+    if (empty($username)  || empty($company) || empty($firstName) || empty($lastName) || empty($birthday)) {
+        die("All fields are required: Username, Company ID, First Name, Last Name, and Birthday.");
     }
 
     try {
         require_once "dbh.inc.php";
 
-        // Insert the user data into the database, including first and last names
-        $query = "INSERT INTO user (username, c_ID, U_firstname, U_lastname) VALUES (:username, :company, :first_name, :last_name)";
+        // Insert the user data into the database, including the birthday
+        $query = "INSERT INTO user (username, c_ID, U_firstname, U_lastname, birthday) VALUES (:username, :company, :first_name, :last_name, :birthday)";
         $stmt = $pdo->prepare($query);
 
         // Bind parameters securely
@@ -22,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':company', $company, PDO::PARAM_STR);
         $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
         $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+        $stmt->bindParam(':birthday', $birthday, PDO::PARAM_STR);
 
         // Execute the query
         $stmt->execute();
@@ -32,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Redirect to login after successful profile creation
         header("Location: login.php");
-        die();
+        exit();
     } catch (PDOException $e) {
         // Handle database errors
-        if ($e->getCode() == 23000) { // Code 23000 is for unique constraint violation
+        if ($e->getCode() == 23000) { // Duplicate username error
             die("Error: Username already exists. Please choose another.");
         }
         die("Query failed: " . $e->getMessage());
@@ -43,10 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     // Redirect if the script is accessed directly without POST
     header("Location: thanks.html");
-    die();
+    exit();
 }
+// htmlspecialchars($username); for output
 ?>
 
 
 
-    // htmlspecialchars($username); for output
+    
