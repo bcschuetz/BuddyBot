@@ -10,8 +10,6 @@ let counter = 0;
 function next() {
     counter++;
 
-    
-
     document.getElementById("header").innerText = "Header " + counter;
     document.getElementById("description").innerText = "Description " + counter;
     document.getElementById("image").src = counter % 2 == 1 ? "cat.jpeg" : "tac.jpeg";
