@@ -4,4 +4,4 @@
         echo htmlspecialchars($output);
     ?>
 </div>
-<script src="display_script.js"></script>
+<script src="getinfo.js"></script>

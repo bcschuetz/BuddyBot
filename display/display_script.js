@@ -1,6 +1,8 @@
 let delayMilliseconds = 2000;  // change to 20 seconds later (= 20000)
 let cycleThroughEvents = true;
-// let even
+let events = [
+    {"type": "birthday", "title": "Person hat heute Geburtstag!", "description": "abc", "image": "cat.jpeg"}
+];
 
 
 // Manage each cycle step
@@ -10,7 +12,9 @@ let counter = 0;
 function next() {
     counter++;
 
-    document.getElementById("header").innerText = "Header " + counter;
+    var mynewinfo = getInfo("lisa_hecker", "first_name");
+
+    document.getElementById("header").innerText = "Header " + counter + " " + mynewinfo;
     document.getElementById("description").innerText = "Description " + counter;
     document.getElementById("image").src = counter % 2 == 1 ? "cat.jpeg" : "tac.jpeg";
 }
