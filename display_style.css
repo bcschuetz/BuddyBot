@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    max-height: 100vh;
+}
+
+#header {
+    font-size: 50px;
+    margin-bottom: 20px;
+    max-height: 25vh;
+}
+
+#description {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*
+#container {
+    max-height: 75vh;
+}
+*/
+
+.container img {
+    object-fit: contain;
+    max-height: 75vh;
+}
