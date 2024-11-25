@@ -8,7 +8,7 @@ let cycleThroughEvents = true;
 function getInfo(username, key) {
     var dataArray = document.getElementById("php-get-info").textContent;
     //var dataArray = div.textContent;
-    alert(dataArray);
+    //alert(dataArray);
 }
 
 // Manage each cycle step
