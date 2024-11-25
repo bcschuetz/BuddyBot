@@ -54,13 +54,13 @@
         </section>
         <div class="main_bp">
         <form name="login" method="post" action="login.php" class="buddy_form">
-            <p>Please type in your username</p>
+            <p>Please type in your username...</p>
             <input type="text" placeholder="Username" name="username" required>
-            <p>... and your company ID!</p>
+            <p>...and your company ID!</p>
             <input type="text" placeholder="Company ID" name="c_ID" required>
             <input type="submit" value="submit">
             <input type="reset" value="reset">
-            <p>Don't own a Buddy Profile?</p>
+            <p>Don't have a Buddy Profile yet?</p>
             <a href="buddyprofile.php">Create Buddy Profile</a>
         </form>
             
